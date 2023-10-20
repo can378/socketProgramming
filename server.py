@@ -1,11 +1,34 @@
 import socket
 
+# 서버 IP 주소와 포트 설정
+HOST = '0.0.0.0'  # 모든 네트워크 인터페이스에 바인딩
+PORT = 12345  # 사용할 포트 번호
+
+# 소켓 생성
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(('192.168.109.226', 9008))    # ip주소, 포트번호 지정
-server_socket.listen(0)                          # 클라이언트의 연결요청을 기다리는 상태
 
-client_socket, addr = server_socket.accept()     # 연결 요청을 수락함. 그러면 아이피주소, 포트등 데이터를 return
+# 소켓을 주소와 포트에 바인딩
+server_socket.bind((HOST, PORT))
 
-data = client_socket.recv(65535)                 # 클라이언트로 부터 데이터를 받음. 출력되는 버퍼 사이즈. (만약 2할 경우, 2개의 데이터만 전송됨)
+# 클라이언트의 연결 대기
+server_socket.listen(1)
+print('서버가 클라이언트 연결을 대기 중입니다...')
 
-print("받은 데이터:", data.decode())             # 받은 데이터를 해석함.
+# 클라이언트 연결 수락
+client_socket, client_address = server_socket.accept()
+print(f'{client_address}에서 연결됨')
+
+while True:
+    # 클라이언트로부터 데이터 수신
+    data = client_socket.recv(1024)
+    if not data:
+        break
+    print(f'수신한 데이터: {data.decode()}')
+
+    # 클라이언트에게 데이터 전송
+    message = input('전송할 메시지: ')
+    client_socket.send(message.encode())
+
+# 연결 종료
+client_socket.close()
+server_socket.close()
