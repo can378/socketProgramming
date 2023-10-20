@@ -1,8 +1,8 @@
 import socket
 
 # 서버의 IP 주소와 포트 번호 설정
-SERVER_IP = '서버의_IP_주소'  # 서버의 IP 주소로 설정
-SERVER_PORT = 12345  # 서버와 동일한 포트 번호로 설정
+SERVER_IP = '172.30.1.58'  # 서버의 IP 주소
+SERVER_PORT = 12345  # 포트번호 설정 (서버와 동일)
 
 # 소켓 생성
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
