@@ -16,6 +16,7 @@ def LookupPlayer():
     df1=pd.read_csv("Baseball_copy.csv",encoding='UTF-8')
 
     #메뉴 선택
+    print("=========================================================")
     choose=input("choose one\n1.all  2.name  3.role  4.poition  5.year  6.exit\n")
     
     if choose=='all':
@@ -35,10 +36,9 @@ def LookupPlayer():
         
     elif choose=='year':
         year=input("Enter the year=")
-        df1=df1.loc[df1["Year"]==year]
+        df1=df1.loc[df1["Year"]==int(year)]
         
     elif choose=='exit': 
-        print("exit")
         return 0
     else: print("wrong input. print all athletes")
     
@@ -56,17 +56,17 @@ def LookUpTeam():
     df1=pd.read_csv("Baseball_Team.csv",encoding='UTF-8')
 
     #메뉴 선택
-    choose=input("choose one\n1.all  2.year\n")
+    print("=========================================================")
+    choose=input("choose one\n1.all  2.year  3.exit\n")
     
     if choose=='all':
         print("inquire all")
    
     elif choose=='year':
         year=input("Enter the year=")
-        df1=df1.loc[df1["Team_Year"]==year]
+        df1=df1.loc[df1["Team_Year"]==int(year)]
         
     elif choose=='exit': 
-        print("exit") 
         return 0
     else: print("wrong input. print all athletes")
     
@@ -82,7 +82,7 @@ def LookUpTeam():
 
 
 while True:
-    
+    print("=========================================================")
     menu=input("숫자를 선택해 주세요.\n1.팀 성적 조회  2.선수 조회\n")
     
     if menu=="1":    LookUpTeam()
@@ -90,7 +90,7 @@ while True:
     else:print("잘못된 입력입니다.")
     
 
-
+    print("=========================================================")
     t=input("다시 조회[Y/N]")
     if t!="y"and t!="Y": break
     
