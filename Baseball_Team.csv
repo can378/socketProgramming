@@ -1,4 +1,4 @@
-Team Year,Win_Percentage,Ranking,Score_get,Score_Lost
+Team_Year,Win_Percentage,Ranking,Score_get,Score_Lost
 1990,0.592,1,578,457
 1991,0.424,6,472,608
 1992,0.431,7,573,616
