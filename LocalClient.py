@@ -1,7 +1,7 @@
 import socket
 
 # 서버의 IP 주소와 포트 번호 설정
-SERVER_IP = '111111111'  # 서버의 IP 주소
+SERVER_IP = '192.168.123.3'  # 서버의 IP 주소
 SERVER_PORT = 12345  # 포트번호 설정 (서버와 동일)
 
 # 소켓 생성
