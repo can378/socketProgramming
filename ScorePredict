@@ -23,7 +23,7 @@ def ScorePredictFunction():
 
 
     print("2024년 예상 승률: %.3f"%win_percentage_2024)
-    print("2024년 예상 랭킹: %.0f" %ranking_2024)
+    print("2024년 예상 랭킹: %.0f"%ranking_2024)
     print("2024년 예상 득점: %.0f"%score_get_2024)
     print("2024년 예상 실점: %.0f"%score_lost_2024)
 
