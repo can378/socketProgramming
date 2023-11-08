@@ -2,13 +2,14 @@ import socket
 import select
 import random
 
-HOST = ''
-PORT = 50007
+HOST = '172.30.1.63'
+PORT = 12345
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    
     s.bind((HOST, PORT))
     s.listen()
-    print('서버가 시작되었습니다.')
+    print('서버 시작')
 
     readsocks = [s]
     answers = {}
