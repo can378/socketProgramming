@@ -19,7 +19,7 @@ def load_questions(filename):
 
 # 서버 소켓 설정
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("172.30.1.55", 12345))
+server_socket.bind(("192.168.0.4", 12345))
 server_socket.listen(5)
 
 questions = load_questions(r"C:\BQ.txt")

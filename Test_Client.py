@@ -1,7 +1,7 @@
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("192.168.0.3", 12345))
+client_socket.connect(("192.168.0.4", 12345))
 
 
 user_input = input("원하는 기능의 번호: ")
@@ -50,4 +50,6 @@ elif user_input == '6':
     print("서버와의 연결을 종료합니다.")
     client_socket.close()
         
+        
+
         

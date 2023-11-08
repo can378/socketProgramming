@@ -1,5 +1,7 @@
 import socketserver
 import threading
+import select
+
 
 
 HOST = '172.30.1.5' # 서버의 ip를 열음

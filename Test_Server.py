@@ -1,6 +1,11 @@
 import socket
 import random
 import pandas as pd
+import csv
+from tabulate import tabulate
+
+from lookUp import LookupPlayer
+from lookUp import LookUpTeam
 
 filename = r'C:\BQ.txt'
 def load_questions(filename):
@@ -89,16 +94,22 @@ def Baseball_Info():
                 break
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("192.168.0.3", 12345))
+server_socket.bind(("192.168.0.4", 12345))
 server_socket.listen(5)
 print("서버가 시작되었습니다. 클라이언트를 기다립니다...")
 
 while True:
     client_socket, addr = server_socket.accept()
-    menu = ("원하시는 기능의 번호를 선택해주세요.\n4.야구 퀴즈 5. 야구 정보 전달 6. 종료 \n")
+    menu = ("원하시는 기능의 번호를 선택해주세요.\n1.성적 예측  2. 선수 조회 3. 팀 성적 조회  4.야구 퀴즈  5. 야구 정보 전달  6. 종료 \n")
     client_socket.send(menu.encode())
     client_choice = client_socket.recv(1024).decode()
-    if client_choice == "4":
+    if client_choice=="1":
+        print("미완성")
+    elif client_choice == "2":
+        LookupPlayer()
+    elif client_choice == "3":
+        LookUpTeam()
+    elif client_choice == "4":
         Baseball_Quiz()
     elif client_choice == "5":
         Baseball_Info()
