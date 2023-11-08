@@ -16,7 +16,7 @@ def LookupPlayer():
     
     
     while True:
-        df1=pd.read_csv("Baseball.csv",encoding='UTF-8')
+        df1=pd.read_csv("Baseball_Player.csv",encoding='UTF-8')
         wrong=False
         
         #메뉴 선택

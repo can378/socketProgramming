@@ -1,11 +1,9 @@
 import socketserver
 import threading
 
-#https://ansan-survivor.tistory.com/319
-#https://ksr930.tistory.com/318 웹 소켓통신 개길음 주의
 
-HOST = '172.30.1.5' # 서버의 ip를 열음. (이 서버의 ip로 클라이언트가 접속을 해야 한다), 그전에 ping을 먼저 확인하도록.
-PORT = 9009				 # 포트번호 (같아야 함)
+HOST = '172.30.1.5' # 서버의 ip를 열음
+PORT = 9009				 # 포트번호
 lock = threading.Lock()  # syncronized 동기화 진행하는 스레드 생성
 
 
@@ -13,7 +11,8 @@ class UserManager:  # 사용자관리 및 채팅 메세지 전송을 담당하�
     # ① 채팅 서버로 입장한 사용자의 등록
     # ② 채팅을 종료하는 사용자의 퇴장 관리
     # ③ 사용자가 입장하고 퇴장하는 관리
-    # ④ 사용자가 입력한 메세지를 채팅 서버에 접속한 모두에게 전송
+    # ④ 사용자가 입력한 메세지를 채팅 서버에 접속한 모두에게 전송하거나 server만 인식하게
+
 
     def __init__(self):
         self.users = {}  # 사용자의 등록 정보를 담을 사전 {사용자 이름:(소켓,주소),...}
@@ -66,6 +65,8 @@ class UserManager:  # 사용자관리 및 채팅 메세지 전송을 담당하�
         conn_.send(msg.encode())
 
 
+
+
 class MyTcpHandler(socketserver.BaseRequestHandler):
     userman = UserManager()
 
@@ -97,12 +98,14 @@ class MyTcpHandler(socketserver.BaseRequestHandler):
                 return username
 
 
+
 class ChatingServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     pass
 
 
+
 def runServer():
-    print('+++ 채팅 서버를 시작합니다. 종료는 Ctrl-C')
+    print('+++서버를 시작합니다. 종료는 Ctrl-C')
 
     try:
         server = ChatingServer((HOST, PORT), MyTcpHandler)
