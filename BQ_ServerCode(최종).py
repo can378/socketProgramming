@@ -1,9 +1,9 @@
 import socket
 import random
 
-filename = r'C:\BQ.txt'
+filename = r'BQ.txt'
 def load_questions(filename):
-    with open(r'C:\BQ.txt', "r", encoding = "utf-8") as file:
+    with open(r'BQ.txt', "r", encoding = "utf-8") as file:
         content = file.read()
     questions = content.split('# ')[1:]
     parsed_questions = []
@@ -19,12 +19,12 @@ def load_questions(filename):
 
 # 서버 소켓 설정
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("192.168.0.4", 12345))
+server_socket.bind(("192.168.16.196", 1224))
 server_socket.listen(5)
 
-questions = load_questions(r"C:\BQ.txt")
+questions = load_questions(r"BQ.txt")
 
-print("서버가 시작되었습니다. 클라이언트를 기다립니다...")
+print("서버가 시작되었습니다. 클라이트를 기다립니다...")
 
 while True:
     # 클라이언트 연결 대기

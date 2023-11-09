@@ -22,10 +22,9 @@ def ScorePredictFunction():
     Team_Year_2024,win_percentage_2024, ranking_2024, score_get_2024, score_lost_2024 = predictions_2024[0]
 
 
-    print("2024년 예상 승률: %.3f"%win_percentage_2024)
-    print("2024년 예상 랭킹: %.0f"%ranking_2024)
-    print("2024년 예상 득점: %.0f"%score_get_2024)
-    print("2024년 예상 실점: %.0f"%score_lost_2024)
+    result=f"2024년 예상 승률:{win_percentage_2024}\n2024년 예상 랭킹:{int(ranking_2024)}\n2024년 예상 득점:{int(score_get_2024)}\n2024년 예상 실점:{int(score_lost_2024)}\n"
+    #print(result)
+    return result
 
 
-ScorePredictFunction()
+#ScorePredictFunction()

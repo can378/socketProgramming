@@ -11,27 +11,23 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((SERVER_IP, SERVER_PORT))
 print(f'서버에 연결. 서버 IP: {SERVER_IP}, 포트: {SERVER_PORT}')
 
-
-
-
+homeMenuExplain="\n\n==== 원하는 숫자를 선택하세요.\n==== 1.성적예측  2.경기조회  3.선수조회  4.야구퀴즈  5.야구상식  6.종료\n"
+print(homeMenuExplain)
 
 while True:
     
-    client_socket.send("0".encode('utf-8'))
+    # 서버에게 데이터 전송
+    message = input('선택: ')
+    client_socket.send(message.encode())
     
     # 서버로부터 데이터 수신
-    while True:
-        data = client_socket.recv(1024)
-        if data.decode()=="end": break
-        else: print(data.decode())
+    data = client_socket.recv(1024)
+    print(data.decode())
     
     
-    # 서버에게 데이터 전송
-    message = input('번호 선택: ')
-    client_socket.send(message.encode())
 
-   
     
+
 
 # 연결 종료
 client_socket.close()

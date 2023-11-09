@@ -12,7 +12,49 @@ pd.set_option('display.max_rows',None)
 #pip install tabulate[widechars] 
 
 
-def LookupPlayer():
+
+def LookUpPlayer(choose):
+   
+    df1=pd.read_csv("Baseball_Player.csv",encoding='UTF-8')
+    wrong=False
+    
+
+    if int(choose)==1:
+        print("모두 출력")
+    else:
+        df1=df1.loc[df1["Name"]==choose]
+    
+    
+
+    if df1.empty: return "\n잘못된 입력값이거나 해당 선수의 데이터가 없습니다."
+    else:
+        df1=pd.DataFrame(df1)
+        table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
+        return table1
+
+
+
+
+def LookUpTeam(choose):
+
+    df1=pd.read_csv("Baseball_Team.csv",encoding='UTF-8')
+
+    if int(choose)==1:
+        df1=df1.loc[df1["Ranking"]!=0]
+    else:
+        df1=df1.loc[df1["Team_Year"]==int(choose)]
+    
+    
+    if df1.empty : return "\n잘못된 입력값이거나 해당 년도의 경기 데이터가 없습니다."
+    else:
+        df1=pd.DataFrame(df1)
+        table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
+        return table1
+
+
+
+'''
+def LookupPlayer_original():
     
     
     while True:
@@ -56,13 +98,9 @@ def LookupPlayer():
                 df1=pd.DataFrame(df1)
                 table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
                 print(table1)
-    
-
-
-
-
-
-def LookUpTeam():
+'''
+'''
+def LookUpTeam_original():
     
     
     while True:
@@ -94,9 +132,9 @@ def LookUpTeam():
                 df1=pd.DataFrame(df1)
                 table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
                 print(table1)
+'''
         
-
-
+        
 
 
 '''

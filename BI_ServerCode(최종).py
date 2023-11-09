@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_csv('BI.csv', header=None, encoding = 'utf-8')
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(('192.168.0.4', 12345))
+server_socket.bind(('192.168.16.196', 1234))
 server_socket.listen(5)
 
 print("서버가 시작되었습니다. 클라이언트를 기다립니다...")

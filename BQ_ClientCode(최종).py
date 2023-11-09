@@ -1,7 +1,7 @@
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("192.168.0.4", 12345))
+client_socket.connect(("192.168.16.196", 1224))
 
 print("서버에 연결되었습니다.")
 

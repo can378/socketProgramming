@@ -1,7 +1,7 @@
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(('192.168.0.4', 12345))
+client_socket.connect(('192.168.16.196', 1234))
 
 while True:
     request = input("원하는 정보를 선택하세요 (역사 : 1, 지표 : 2, 경기방식과 기본 규칙 : 3): ")
