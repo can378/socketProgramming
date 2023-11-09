@@ -85,9 +85,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         
                 
                 elif status=="lookUpPlayer":
-                    if n==1: message+="선수 전체 조회를 선택"
-                    else: message+=LookUpPlayer(n)
-                    
+                    #if n==1: message+="선수 전체 조회를 선택"
+                    #else: message+=LookUpPlayer(n)
+                    message+=LookUpPlayer(n)
                     #다시 홈메뉴로
                     message+=homeMenuExplain
                     status="homeMenu"

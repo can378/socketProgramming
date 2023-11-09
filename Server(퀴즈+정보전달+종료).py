@@ -2,9 +2,9 @@ import socket
 import random
 import pandas as pd
 
-filename = r'C:\BQ.txt'
+filename = r'BQ.txt'
 def load_questions(filename):
-    with open(r'C:\BQ.txt', "r", encoding = "utf-8") as file:
+    with open(r'BQ.txt', "r", encoding = "utf-8") as file:
         content = file.read()
     questions = content.split('# ')[1:]
     parsed_questions = []
@@ -19,7 +19,7 @@ def load_questions(filename):
     return parsed_questions
 
 def Baseball_Quiz():
-    questions = load_questions(r"C:\BQ.txt")
+    questions = load_questions(r"BQ.txt")
     selected_questions = []
     
     while True:
@@ -86,7 +86,7 @@ def Baseball_Info():
             break
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("172.30.1.38", 12346))
+server_socket.bind(("192.168.16.196", 12346))
 server_socket.listen(5)
 print("서버가 시작되었습니다. 클라이언트를 기다립니다...")
 

@@ -1,7 +1,7 @@
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("172.30.1.38", 12346))
+client_socket.connect(("192.168.16.196", 12346))
 
 while True:
     menu = client_socket.recv(1024).decode()
