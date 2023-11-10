@@ -8,7 +8,7 @@ from LookUp import LookUpPlayer,LookUpTeam
 from InfoAndQuiz import Baseball_Info,load_questions
 from SP import ScorePredictFunction
 
-HOST = '172.30.1.61'
+HOST = ' 1'
 PORT = 1233
 
 
