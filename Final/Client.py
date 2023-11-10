@@ -1,11 +1,14 @@
 import socket
 
 # 서버의 IP 주소, 포트 번호 설정
-SERVER_IP = '192.168.16.196'
+SERVER_IP = '172.30.1.61'
 SERVER_PORT = 1233
 
 # 소켓 생성
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# 소켓 버퍼 크기 설정 (예: 4MB)
+client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 10 * 1024 * 1024)
 
 # 서버에 연결
 client_socket.connect((SERVER_IP, SERVER_PORT))
