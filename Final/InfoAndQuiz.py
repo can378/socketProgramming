@@ -19,7 +19,7 @@ def load_questions():
 
     return parsed_questions
 
-
+#안쓰고 있음
 def Baseball_Quiz():
     
     questions = load_questions()
