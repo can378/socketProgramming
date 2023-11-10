@@ -24,7 +24,7 @@ while True:
     client_socket.send(message.encode())
     
     # 서버로부터 데이터 수신
-    data = client_socket.recv(1024)
+    data = client_socket.recv(10 * 1024 * 1024)
     print(data.decode())
     
     

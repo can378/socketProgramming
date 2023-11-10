@@ -19,7 +19,7 @@ def LookUpPlayer(choose):
     wrong=False
     
 
-    if int(choose)==1:
+    if str(choose)=="1":
         print("모두 출력")
     else:
         df1=df1.loc[df1["Name"]==choose]

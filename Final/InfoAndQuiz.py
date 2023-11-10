@@ -70,7 +70,7 @@ def Baseball_Quiz():
 def Baseball_Info(request):        
    
     df = pd.read_csv('BI.csv', header=None, encoding = 'utf-8')
-    message=""
+    message="\n"
     
     if int(request) == 3:
         column_data = df.iloc[1:2, 2]

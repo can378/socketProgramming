@@ -5,38 +5,11 @@ import random
 import pandas as pd
 
 from LookUp import LookUpPlayer,LookUpTeam
-from InfoAndQuiz import Baseball_Quiz
+from InfoAndQuiz import Baseball_Info,Baseball_Quiz
 from SP import ScorePredictFunction
 
 HOST = '172.30.1.61'
 PORT = 1233
-
-
-
-
-def Baseball_Info(request):        
-   
-    df = pd.read_csv('Final/BI.csv', header=None, encoding = 'utf-8')
-    message="\n"
-    
-    
-    if int(request) == 1:
-        column_data = df.iloc[1:2, 0]
-        for row in column_data:
-            message+=(row + '\n')
-            
-    if int(request) == 2:
-        column_data = df.iloc[1:2, 1]
-        for row in column_data:
-            message+=(row + '\n')
-            
-    if int(request) == 3:
-        column_data = df.iloc[1:2, 2]
-        for row in column_data:
-            message+=(row + '\n')
-            
-            
-    return message
 
 
 
@@ -77,27 +50,25 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 
                 
                 
+        
                 
-                n=data
-                '''
-                if status!="lookUpPlayer" or status!="quiz":
+                if status=="lookUpPlayer" or status=="quiz":
+                    n=data
+                else:
                     #잘못된 입력 처리
-                        try:
-                            n = int(data)
-                        except ValueError:
-                            #conn.sendall(f'입력값이 올바르지 않습니다:{data}\n'.encode('utf-8'))
-                            message+="\n잘못된 입력값입니다. 다시 입력하세요\n"
-                            conn.sendall(message.encode('utf-8'))
-                            continue
-                else:n=data
-                '''
+                    try:
+                        n = int(data)
+                    except ValueError:
+                        #conn.sendall(f'입력값이 올바르지 않습니다:{data}\n'.encode('utf-8'))
+                        message+="\n잘못된 입력값입니다. 다시 입력하세요\n"
+                        conn.sendall(message.encode('utf-8'))
+                        continue
 
 
 
 
                 if status=="homeMenu":
-                    n=int(data)
-                    
+
                     #선택
                     if n == 1:
                         message+="\n2024경기 성적 예측입니다.\n"
@@ -115,7 +86,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         
                         
                     elif n==4:
-                        message+="야구퀴즈 선택\n"
+                        message+="야구퀴즈를 시작합니다.\n"
                         status="quiz"
                         
                     elif n==5:
@@ -152,7 +123,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     
                     
                 elif status=="quiz":
-                    message+="야구 퀴즈"
+
                     
                     #다시 홈메뉴로
                     message+=homeMenuExplain
