@@ -86,7 +86,7 @@ def Baseball_Info():
             break
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("172.30.1.61", 12346))
+server_socket.bind((" 1", 12346))
 server_socket.listen(5)
 print("서버가 시작되었습니다. 클라이언트를 기다립니다...")
 
