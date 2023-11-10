@@ -35,14 +35,22 @@ def LookUpPlayer(choose):
 
 
 
-def LookUpTeam(choose):
+def LookUpTeam(input):
 
     df1=pd.read_csv("Baseball_Team.csv",encoding='UTF-8')
 
-    if int(choose)==1:
+    
+    #잘못된 입력 처리
+    try:
+        choose = int(input)
+    except ValueError:
+        return"\n잘못된 입력값입니다.\n"
+                
+                
+    if choose==1:
         df1=df1.loc[df1["Ranking"]!=0]
     else:
-        df1=df1.loc[df1["Team_Year"]==int(choose)]
+        df1=df1.loc[df1["Team_Year"]==choose]
     
     
     if df1.empty : return "\n잘못된 입력값이거나 해당 년도의 경기 데이터가 없습니다."

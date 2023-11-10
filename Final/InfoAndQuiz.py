@@ -5,7 +5,7 @@ import pandas as pd
 
 def load_questions():
     
-    with open(r'BQ.txt', "r", encoding = "utf-8") as file:
+    with open(r'Final/BQ.txt', "r", encoding = "utf-8") as file:
         content = file.read()
     questions = content.split('# ')[1:]
     parsed_questions = []
@@ -18,6 +18,8 @@ def load_questions():
         parsed_questions.append((q_text, correct_answer))
 
     return parsed_questions
+
+
 
 #안쓰고 있음
 def Baseball_Quiz():
@@ -67,25 +69,35 @@ def Baseball_Quiz():
         
 
 
-def Baseball_Info(request):        
+def Baseball_Info(input):        
    
     df = pd.read_csv('BI.csv', header=None, encoding = 'utf-8')
     message="\n"
     
-    if int(request) == 3:
+    
+    #잘못된 입력 처리
+    try:
+        request = int(input)
+    except ValueError:
+        return"\n잘못된 입력값입니다.\n"
+    
+    
+    if request == 3:
         column_data = df.iloc[1:2, 2]
         for row in column_data:
             message+=(row + '\n')
             
-    if int(request) == 1:
+    elif request == 1:
         column_data = df.iloc[1:2, 0]
         for row in column_data:
             message+=(row + '\n')
             
-    if int(request) == 2:
+    elif request == 2:
         column_data = df.iloc[1:2, 1]
         for row in column_data:
             message+=(row + '\n')
+    else:
+        message+="\n해당되는 번호가 없습니다.\n"
             
     return message
 
