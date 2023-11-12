@@ -21,7 +21,9 @@ while True:
     
     # 서버에게 데이터 전송
     message = input('선택: ')
-    client_socket.send(message.encode())
+    message = int(message)
+    message_byte = str(message).encode()
+    client_socket.send(message_byte)
     
     # 서버로부터 데이터 수신
     data = client_socket.recv(10 * 1024 * 1024)
