@@ -46,7 +46,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             else:  
                 
                 conn = sock
-                data = conn.recv(1024).decode('utf-8')
+                data = conn.recv(1)
                 message=""
                 
                 
