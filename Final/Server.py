@@ -57,6 +57,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 except ValueError:
                     message="\n잘못된 입력값입니다. 다시 입력하세요\n"
                     conn.sendall(message.encode('utf-8'))
+                    conn.recv(1024)
                     continue
 
 
