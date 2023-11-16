@@ -88,7 +88,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
                 elif n==4:
                     
-                    questions = load_questions()
+                    question = load_questions()
                     
                     selected_question = random.choice(question)
                         
