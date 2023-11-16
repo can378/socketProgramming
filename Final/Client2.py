@@ -18,12 +18,29 @@ homeMenuExplain="\n\n==== 원하는 숫자를 선택하세요.\n==== 1.성적예
 print(homeMenuExplain)
 
 while True:
-    
-    # 서버에게 데이터 전송
-    message = input('선택: ')
-    message = int(message)
-    message_byte = str(message).encode()
-    client_socket.send(message_byte)
+    try:
+        message = input("선택: ")
+        message_byte = str(int(message)).encode()
+        client_socket.send(message_byte)
+        if message == '3':
+            get_message = client_socket.recv(1024).decode()
+            print(get_message)
+            new_input = input("선택: ")
+            new_input_byte = new_input.encode('utf-8')
+            client_socket.send(new_input_byte)
+
+        if message == '4':
+            for _ in range(10):
+                question = client_socket.recv(1024).decode()
+                print(question)
+                add_input = input("정답 입력: ")
+                add_input_byte = add_input.encode('utf-8')
+                client_socket.send(add_input_byte)
+                result_message = client_socket.recv(1024).decode()
+                print(result_message)
+    except ValueError:
+        print("해당 번호를 입력하세요.")
+        continue
     
     # 서버로부터 데이터 수신
     data = client_socket.recv(10 * 1024 * 1024)
