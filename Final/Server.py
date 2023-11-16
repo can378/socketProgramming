@@ -89,49 +89,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 elif n==4:
                     
                     questions = load_questions()
-                    selected_questions = [] #퀴즈 질문들을 배열로 저장
                     
-                    
-                    correct_count = 0
-
-                    if len(selected_questions) == 0:
-                        selected_questions = random.sample(questions, 10)
-
-                    for question, correct_answer in selected_questions:
+                    selected_question = random.choice(question)
                         
-                        #question을 보낸다.
-                        conn.send(question.encode())
+                    #question을 보낸다.
+                    conn.send(selected_question[0].encode())
                         
-                        #answer을 받아온다.
-                        client_answer = conn.recv(1024).decode()
+                    #answer을 받아온다.
+                    client_answer = conn.recv(1024).decode()
                         
-                        
-                        if client_answer.lower() == correct_answer.lower():
-                            correct_count += 1
-                            response = "정답입니다!\n\n"
-                        else:
-                            response = f"틀렸습니다. 정답은 '{correct_answer}'입니다.\n\n"
-
-                        conn.send(response.encode())
-                    
-                    
-                    # 맞춘 개수에 따른 메시지 전송
-                    result_message=str(correct_count)+"개 맞췄습니다.\n"
-                    
-                    if correct_count == 10:
-                        result_message += "모두 맞추셨습니다. 축하합니다!"
-                    elif correct_count >= 7:
-                        result_message += "잘 하셨어요!"
-                    elif correct_count >= 1:
-                        result_message += "더 분발하세요!"
+                    if client_answer.lower() == selected_question[1].lower():
+                        response = "정답입니다!\n\n"
                     else:
-                        result_message += "하나도 못 맞추셨습니다. 계속 노력하세요!"
-    
-                    message+=result_message+"\n"
-                    
+                        response = f"틀렸습니다. 정답은 '{selected_question[1]}'입니다.\n\n"
+                    conn.send(response.encode())
+
                     message+=homeMenuExplain
-
-
                         
 
                 elif n==5:
