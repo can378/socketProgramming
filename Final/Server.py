@@ -46,14 +46,14 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             else:  
                 
                 conn = sock
-                function_data = conn.recv(1)
+                data = conn.recv(1024).decode('utf-8')
                 message=""
                 
                 
 
                 #잘못된 입력 처리
                 try:
-                    n = int(function_data)
+                    n = int(data)
                 except ValueError:
                     message="\n잘못된 입력값입니다. 다시 입력하세요\n"
                     conn.sendall(message.encode('utf-8'))
@@ -73,8 +73,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     message+="\n조회할 경기의 년도를 입력하세요.\n(전체 조회는 1을 입력하세요)\n"
                     conn.send(message.encode())
                     
-                    Year_data = conn.recv(1024).decode('utf-8')
-                    message=LookUpTeam(Year_data)
+                    data = conn.recv(1024).decode('utf-8')
+                    message=LookUpTeam(data)
                     message+=homeMenuExplain
 
                     
@@ -82,8 +82,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     message+="\n조회할 선수의 이름을 입력하세요.\n(전체 조회는 1을 입력하세요)\n"
                     conn.send(message.encode())
                     
-                    Name_data = conn.recv(1024).decode('utf-8')
-                    message=LookUpPlayer(Name_data)
+                    data = conn.recv(1024).decode('utf-8')
+                    message=LookUpPlayer(data)
                     message+=homeMenuExplain
 
                 elif n==4:
@@ -138,8 +138,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     message+="\n원하는 정보를 선택하세요.\n1.역사  2.지표  3.경기방식과 기본 규칙\n"
                     conn.send(message.encode())
                     
-                    Info_data = conn.recv(1024).decode('utf-8')
-                    message=Baseball_Info(Info_data)
+                    data = conn.recv(1024).decode('utf-8')
+                    message=Baseball_Info(data)
                     message+=homeMenuExplain
                     
                 elif n==6:
