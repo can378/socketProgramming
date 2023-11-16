@@ -22,6 +22,12 @@ while True:
         message = input("선택: ")
         message_byte = str(int(message)).encode()
         client_socket.send(message_byte)
+        if message == '3':
+            get_message = client_socket.recv(1024).decode()
+            print(get_message)
+            new_input = input("선택: ")
+            new_input_byte = new_input.encode('utf-8')
+            client_socket.send(new_input_byte)
 
         if message == '4':
             for _ in range(10):
