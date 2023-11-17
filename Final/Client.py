@@ -24,10 +24,6 @@ while True:
     # 서버로부터 데이터 수신
     data = client_socket.recv(10 * 1024 * 1024)
     print(data.decode())
-
-    if "틀렸습니다." in data.decode() or "정답입니다!"in data.decode():
-        data=client_socket.recv(1024).decode()
-        print(data)
     
     
 
