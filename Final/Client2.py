@@ -18,6 +18,7 @@ while True:
     
     # 서버에게 데이터 전송
     message = input('선택: ')
+    message=message.replace(" ","")
     client_socket.send(message.encode())
     
     # 서버로부터 데이터 수신

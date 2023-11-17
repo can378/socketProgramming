@@ -8,13 +8,8 @@ from LookUp import LookUpPlayer,LookUpTeam
 from InfoAndQuiz import Baseball_Info,load_questions
 from SP import ScorePredictFunction
 
-HOST = ' 1'
+HOST = '172.30.1.57'
 PORT = 1233
-
-
-
-
-    
 
 
     
@@ -55,9 +50,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 try:
                     n = int(data)
                 except ValueError:
-                    message="\n잘못된 입력값입니다. 다시 입력하세요\n"
+                    message="\n잘못된 입력값입니다.\n"
                     conn.sendall(message.encode('utf-8'))
-                    conn.recv(1024)
                     continue
 
 
@@ -99,11 +93,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     client_answer = conn.recv(1024).decode()
                         
                     if client_answer.lower() == selected_question[1].lower():
-                        response = "정답입니다!\n\n"
+                        response = "정답입니다!\n"
                     else:
-                        response = f"틀렸습니다. 정답은 '{selected_question[1]}'입니다.\n\n"
-                    conn.send(response.encode())
+                        response = f"틀렸습니다. 정답은 '{selected_question[1]}'입니다.\n"
 
+                    message+=response+"\n"
                     message+=homeMenuExplain
                         
 
@@ -117,10 +111,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     
                 elif n==6:
                     # 클라이언트 접속 해제
-                    conn.sendall(f"종료합니다.\n".encode('utf-8'))
-                    conn.close()
-                    readsocks.remove(conn)  #readsocks에서 제거
-                    
+                    message="\n종료합니다.\n"
+
                 else :
                     message+="\n해당 숫자는 선택지에 없습니다.\n"
                     message+=homeMenuExplain
@@ -128,6 +120,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
 
                 conn.sendall(message.encode('utf-8'))
+                
+                if n==6:
+                    conn.close()
+                    readsocks.remove(conn)  #readsocks에서 제거
+                    
                 
 
 
