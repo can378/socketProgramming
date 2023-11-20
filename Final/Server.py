@@ -8,8 +8,8 @@ from LookUp import LookUpPlayer,LookUpTeam
 from InfoAndQuiz import Baseball_Info,load_questions
 from SP import ScorePredictFunction
 
-HOST = '172.30.1.57'
-PORT = 1233
+HOST = '1'
+PORT = 9999
 
 
     
@@ -33,7 +33,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             # 신규 클라이언트 접속===============================================
             if sock == s:  
                 newsock, addr = s.accept()
-                print(f'클라이언트 접속:{addr}')
+                #print(f'클라이언트 접속:{addr}')
+                print("클라이언트 접속")
                 readsocks.append(newsock)
 
                 
