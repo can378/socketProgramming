@@ -5,7 +5,7 @@ import pandas as pd
 
 def load_questions():
     
-    with open(r'Final/BQ.txt', "r", encoding = "utf-8") as file:
+    with open(r'BQ.txt', "r", encoding = "utf-8") as file:
         content = file.read()
     questions = content.split('# ')[1:]
     parsed_questions = []

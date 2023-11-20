@@ -12,55 +12,7 @@ pd.set_option('display.max_rows',None)
 #pip install tabulate[widechars] 
 
 
-
-def LookUpPlayer(choose):
-   
-    df1=pd.read_csv("Baseball_Player.csv",encoding='UTF-8')
-    wrong=False
-    
-
-    if str(choose)!="1":
-        df1=df1.loc[df1["Name"]==choose]
-    
-    
-
-    if df1.empty: return "\n잘못된 입력값이거나 해당 선수의 데이터가 없습니다."
-    else:
-        df1=pd.DataFrame(df1)
-        table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
-        return table1
-
-
-
-
-def LookUpTeam(input):
-
-    df1=pd.read_csv("Baseball_Team.csv",encoding='UTF-8')
-
-    
-    #잘못된 입력 처리
-    try:
-        choose = int(input)
-    except ValueError:
-        return"\n잘못된 입력값입니다.\n"
-                
-                
-    if choose==1:
-        df1=df1.loc[df1["Ranking"]!=0]
-    else:
-        df1=df1.loc[df1["Team_Year"]==choose]
-    
-    
-    if df1.empty : return "\n잘못된 입력값이거나 해당 년도의 경기 데이터가 없습니다."
-    else:
-        df1=pd.DataFrame(df1)
-        table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
-        return table1
-
-
-
-'''
-def LookupPlayer_original():
+def LookupPlayer():
     
     
     while True:
@@ -104,9 +56,13 @@ def LookupPlayer_original():
                 df1=pd.DataFrame(df1)
                 table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
                 print(table1)
-'''
-'''
-def LookUpTeam_original():
+    
+
+
+
+
+
+def LookUpTeam():
     
     
     while True:
@@ -138,12 +94,12 @@ def LookUpTeam_original():
                 df1=pd.DataFrame(df1)
                 table1 = tabulate(df1, headers='keys', tablefmt='fancy_grid', showindex=False)   
                 print(table1)
-'''
-        
         
 
 
-'''
+
+
+
 while True:
     print("=========================================================")
     menu=input("숫자를 선택해 주세요.\n1.팀 성적 조회  2.선수 조회  3.종료 \n")
@@ -153,7 +109,7 @@ while True:
     elif menu=="3": break
     else:print("잘못된 입력입니다.")
     
-'''
+    
     
     
     

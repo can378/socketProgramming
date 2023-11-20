@@ -1,40 +1,42 @@
-import csv
-from tabulate import tabulate
 
-tabulate.WIDE_CHARS_MODE = False
 
-t="ddd"
+'''
+message=input("입력: ")
 
-while True:
-    data=[]
+m=b'\x02'
+message=bytes(m)+message.encode('utf-8')
+
+
+
+
+message=bytes(message)
+service_code=message[0]
+select_code=message[1:]
+
+
+
+print("message= "+str(message))
+print("byte= "+str(m))
+print(str(service_code)+" "+str(select_code))
+
+
+
+if(int(service_code)==1):
+    print("service code is 1")
+if(int(service_code)==2):
+    print("service code is 2")
+elif int(service_code)==3:
+    print("service code is 3")
     
-    # CSV 파일을 읽기 모드로 열고 데이터 읽기
-    with open('Baseball.csv', 'r', encoding='utf-8') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for row in csv_reader:
-            data.append(row)
+'''
 
-    # 데이터를 표로 출력
-    # headers는 열 헤더를 나타냅니다. 필요에 따라 변경하세요.
-    headers = data[0]  # 첫 번째 행을 열 헤더로 사용
-    data = data[1:]  # 첫 번째 행을 제외한 나머지 데이터
+message=input("입력: ")
+message=bytes(message,encoding='utf-8')
+service_code=message[0]
+select=message[1:]
 
-    # "pretty" 포맷을 사용하여 표를 출력
-    table = tabulate(data, headers, tablefmt="fancy_grid")
-    print(table)
-    t=input()
-    
-    
-    
-    
-# 데이터 프레임 생성
-data = {'Name': ['Alice', 'Bob', 'Charlie'],
-        'Age': [25, 30, 35],
-        'City': ['New York', 'San Francisco', 'Los Angeles']}
+print(f'{service_code} and {select}')
 
-df = pd.DataFrame(data)
 
-# 데이터 프레임을 표로 출력
-table = tabulate(df, headers='keys', tablefmt='pretty', showindex=False)
-print(table)
-
+if service_code==49:
+    print("1111111111")

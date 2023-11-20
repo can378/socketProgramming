@@ -26,5 +26,3 @@ def ScorePredictFunction():
     #print(result)
     return result
 
-
-#ScorePredictFunction()
