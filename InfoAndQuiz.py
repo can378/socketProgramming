@@ -97,7 +97,7 @@ def Baseball_Info(data):
         for row in column_data:
             message+=(row + '\n')
     else:
-        message+="\n해당되는 번호가 없습니다.\n"
+        message+="\n해당되는 정보가 없습니다.\n"
             
     return message
 

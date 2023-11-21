@@ -8,7 +8,7 @@ from LookUp import LookUpPlayer,LookUpTeam
 from InfoAndQuiz import Baseball_Info,load_questions
 from SP import ScorePredictFunction
 
-HOST = '1'
+HOST = '192.168.0.24'
 PORT = 9999
 
 
@@ -66,7 +66,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     message+=homeMenuExplain
                     
                 elif n == 2:
-                    message+="\n조회할 경기의 년도를 입력하세요.\n(전체 조회는 1을 입력하세요)\n"
+                    message+="\n조회할 경기의 년도를 입력하세요.\n"
                     conn.send(message.encode())
                     
                     data = conn.recv(1024).decode('utf-8')
@@ -75,7 +75,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
                     
                 elif n == 3 :
-                    message+="\n조회할 선수의 이름을 입력하세요.\n(전체 조회는 1을 입력하세요)\n"
+                    message+="\n조회할 선수의 이름을 입력하세요.\n"
                     conn.send(message.encode())
                     
                     data = conn.recv(1024).decode('utf-8')
@@ -104,7 +104,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         
 
                 elif n==5:
-                    message+="\n원하는 정보를 선택하세요.\n1.역사  2.지표  3.경기방식과 기본 규칙\n"
+                    message+="\n원하는 정보를 선택하세요.\na.역사  b.지표  c.경기방식과 기본 규칙\n"
                     conn.send(message.encode())
                     
                     data = conn.recv(1024).decode('utf-8')

@@ -16,9 +16,7 @@ pd.set_option('display.max_rows',None)
 def LookUpPlayer(choose):
    
     df1=pd.read_csv("Baseball_Player.csv",encoding='UTF-8')
-    wrong=False
-    
-     df1=df1.loc[df1["Name"]==choose]
+    df1=df1.loc[df1["Name"]==choose]
     
     
     if df1.empty: return "\n잘못된 입력값이거나 해당 선수의 데이터가 없습니다."

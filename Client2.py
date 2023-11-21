@@ -1,7 +1,7 @@
 import socket
 
 # 서버의 IP 주소, 포트 번호 설정
-SERVER_IP = '1'
+SERVER_IP = '192.168.0.24'
 SERVER_PORT = 9999
 
 # 소켓 생성
@@ -22,9 +22,14 @@ while True:
     message=message.replace(" ","")
     client_socket.send(message.encode())
     
+    
     # 서버로부터 데이터 수신
     data = client_socket.recv(10 * 1024 * 1024)
     print(data.decode())
+    
+    if(data.decode()=="\n종료합니다.\n"):
+        break;
+        
 
 
 # 연결 종료
