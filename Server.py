@@ -49,7 +49,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
                 #잘못된 입력 처리
                 try:
-                    n = int(data)
+                    service_code_byte = bytes([int(data[0])])
+                    n = int.from_bytes(service_code_byte, byteorder='big')
                 except ValueError:
                     message="\n잘못된 입력값입니다.\n"
                     conn.sendall(message.encode('utf-8'))
