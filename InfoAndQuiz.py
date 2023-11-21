@@ -69,7 +69,7 @@ def Baseball_Quiz():
         
 
 
-def Baseball_Info(input):        
+def Baseball_Info(data):        
    
     df = pd.read_csv('BI.csv', header=None, encoding = 'utf-8')
     message="\n"
@@ -77,22 +77,22 @@ def Baseball_Info(input):
     
     #잘못된 입력 처리
     try:
-        request = int(input)
+        service_code = data[0]
     except ValueError:
         return"\n잘못된 입력값입니다.\n"
     
     
-    if request == 3:
+    if service_code == 'c':
         column_data = df.iloc[1:2, 2]
         for row in column_data:
             message+=(row + '\n')
             
-    elif request == 1:
+    elif service_code == 'a':
         column_data = df.iloc[1:2, 0]
         for row in column_data:
             message+=(row + '\n')
             
-    elif request == 2:
+    elif service_code == 'b':
         column_data = df.iloc[1:2, 1]
         for row in column_data:
             message+=(row + '\n')
