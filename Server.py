@@ -4,7 +4,7 @@ import select
 import random
 import pandas as pd
 
-from LookUp import LookUpPlayer,LookUpTeam
+from lookUp import LookUpPlayer,LookUpTeam
 from InfoAndQuiz import Baseball_Info,load_questions
 from SP import ScorePredictFunction
 
