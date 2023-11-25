@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
+#pip install scikit-learn
+
 def ScorePredictFunction():
     # 데이터 가져오기
     data = pd.read_csv("Baseball_Team.csv")
