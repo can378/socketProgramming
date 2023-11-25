@@ -8,8 +8,8 @@ from lookUp import LookUpPlayer,LookUpTeam
 from InfoAndQuiz import Baseball_Info,load_questions
 from SP import ScorePredictFunction
 
-HOST = '192.168.0.24'
-PORT = 9999
+HOST = '1'
+PORT = 0000
 
 
     
